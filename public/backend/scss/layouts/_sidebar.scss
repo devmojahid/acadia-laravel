@@ -1,0 +1,374 @@
+// app sidebar layout css
+$sidebar: '.app-sidebar';
+
+#{$sidebar}{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--app-sidebar-width);
+    box-shadow: var(--app-sidebar-shadow);
+    height: 100%;
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+    z-index: 999;
+
+    &-wrapper{
+        width: var(--app-sidebar-width);
+
+    }
+
+    &-toggle{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 25px;
+        background-color: #fff;
+        font-size: 14px;
+        line-height: 1;
+        width: 30px;
+        height: 30px;
+        color: #807DA3;
+        transition: all 0.3s ease;
+        transform-origin: center center;
+        &.collapsed{
+            color: var(--theme-primary);
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        &:hover{
+           color: var(--theme-primary);
+        
+        }
+    }
+
+    &-close{
+        &-btn{
+            color: var(--bs-secondary);
+            width: 24px;
+            height: 24px;
+            line-height: 4px;
+            text-align: center;
+            transform-origin: center center;
+            &:hover{
+                color: var(--bs-black);
+            }
+        }
+    }
+
+    @media (max-width: 1199px) {
+        transform: translateX(-100%);
+
+        &.open{
+            transform: translateX(0);
+        }
+    }
+}
+
+
+
+#{$sidebar}.collapsed{
+    width: var(--app-sidebar-collapsed-width);
+
+    @media (max-width: 1199px) {
+        width: var(--app-sidebar-width);
+    }
+
+    & .app-logo-icon{
+        display: block;
+    }
+    & .app-main-logo{
+        display: none;
+    }
+
+    #{$sidebar}-menu{
+        ul{
+            & li{
+                a{
+                    & .menu{
+                        &-title,
+                        &-arrow{
+                            opacity: 0;
+                        }
+                    }
+                }
+                &.menu-section-title{
+                    padding-left: 6px;
+                    & .menu-section-title-text{
+                        opacity: 0;
+                        visibility: hidden;
+                    }
+                    & .menu-section-title-line{
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+
+                & > #{$sidebar}-submenu{
+                   opacity: 0;
+                }
+
+                &.has-dropdown.dropdown-opened{
+                    &::after{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    &:hover{
+        width: var(--app-sidebar-width);
+
+        & .app-logo-icon{
+            display: none;
+        }
+        & .app-main-logo{
+            display: block;
+        }
+
+        & #{$sidebar}-menu{
+            opacity: 1;
+            ul{
+                & li{
+                    a{
+                        & .menu{
+                            &-icon,
+                            &-title,
+                            &-arrow{
+                                opacity: 1;
+                            }
+
+                            &-icon{
+                                background: initial;
+                            }
+                        }
+                    }
+                    &.menu-section-title{
+                        padding-left: 20px;
+                        & .menu-section-title-text{
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        & .menu-section-title-line{
+                            opacity: 0;
+                            visibility: hidden;
+                        }
+                    }
+                    & > #{$sidebar}-submenu{
+                        opacity: 1;
+                     }
+
+                     &.has-dropdown.dropdown-opened{
+                        &::after{
+                            opacity: 0;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+
+// app header
+#{$sidebar}-header{
+    height: var(--app-sidebar-header-height);
+    border-right: 1px solid var(--app-sidebar-header-border);
+    border-bottom: 1px solid var(--app-sidebar-header-border);
+    padding: 14px 30px;
+    position: relative;
+
+    & .app-logo-icon{
+        display: none;
+    }
+}
+
+
+// app sidebar menu
+#{$sidebar}-menu{
+    padding: 20px 15px 20px 15px;
+    position: relative;
+    
+
+    ul{
+        padding: 0;
+        margin: 0;
+        & li{
+            list-style-type: none;
+            display: block;
+            a{
+                transition: all 0.3s ease;
+                font-family: "Inter", sans-serif;
+                color: #57575A;
+                text-decoration: none;
+                font-size: 14px;
+                line-height: 1;
+                font-weight: 500;
+                border-radius: 6px;
+                padding: 2px 0;
+                margin-left: 4px;
+                
+                & .menu{
+                    &-icon{
+                        padding: 9px 15px 10px 15px;
+                        width: 47px;
+                    }
+                    &-arrow{
+                        margin-right: 14px;
+                    }
+                }
+
+                & span{
+                    transition: all 0.3s ease;
+                }
+
+                &.active{
+                    color: var(--theme-primary);
+                }
+
+                &:hover{
+                    color: var(--theme-primary);
+                    background-color: var(--app-sidebar-menu-hover-color);
+                }
+            }
+
+            &.has-dropdown{
+                &.dropdown-opened{
+                    & > a{
+                        color: var(--theme-primary);
+                    }
+                    position: relative;
+
+                    &::after{
+                        position: absolute;
+                        content: "";
+                        width: 1px;
+                        height: calc(100% - 40px);
+                        background-color: #D9D9D9;
+                        left: 28px;
+                        top: 40px;
+                        opacity: 0;
+                        transition: all .2s ease;
+                    }
+
+                    & li.has-dropdown.dropdown-opened{
+                        &::after{
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            ul#{$sidebar}-submenu{
+                display: none;
+                padding-left: 19px;
+                padding-right: 10px;
+               
+                li{
+                    
+                    
+                    & a{
+                        position: relative;
+                        padding: 13px 15px 13px 28px;
+                        
+                        &::after{
+                            position: absolute;
+                            content: "";
+                            left: 14px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 6px;
+                            height: 6px;
+                            border: 1px solid currentColor;
+                            border-radius: 50%;
+                        }
+
+                        &.active,
+                        &.active:hover{
+                            background-color: var(--theme-primary);
+                            color: #fff;
+                            box-shadow: var(--app-sidebar-active-nav-link-shadow);
+                            
+                        }
+
+                        &:hover{
+                            background-color: #F6F6F9;
+                            color: #57575A;
+                        }
+                    }
+
+                    &.has-dropdown{
+                        &.dropdown-opened{
+                            & > a{
+                                background-color: #F6F6F9;
+                                color: #57575A;
+                                box-shadow: none;
+                            }
+                        }
+                    }
+
+                    & ul{
+                        padding-left: 12px;
+                        padding-right: 12px;
+
+                        & ul{
+                            padding-left: 6px;
+                            padding-right: 6px;
+                        }
+                    }
+                }
+            }
+
+            &.menu-section-title{
+                color: #939397;
+                font-size: 13px;
+                text-transform: uppercase;
+                font-weight: 600;
+                padding-left: 20px;
+                margin-top: 25px;
+                height: 20px;
+                padding-bottom: 6px;
+                position: relative;
+
+
+                & .menu-section-title-line{
+                    height: 4px;
+                    width: 16px;
+                    background-color: #D9D9D9;
+                    border-radius: 2px;
+                    margin: 0 14px;
+                    position: absolute;
+                    top: 6px;
+                    left: 5px;
+                    opacity: 0;
+                    visibility: hidden;
+
+                    &::after,
+                    &::before{
+                        content: "";
+                        display: block;
+                        height: 4px;
+                        width: 4px;
+                        background-color: #D9D9D9;
+                        border-radius: 2px;
+                        left: -8px;
+                        position: absolute;
+                    }
+
+                    &::after{
+                        left: auto;
+                        right: -8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// app sidebar footer
+#{$sidebar}-footer{
+    height: var(--app-sidebar-footer-height);
+
+}

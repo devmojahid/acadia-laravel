@@ -1,0 +1,22 @@
+@use '../theme/utils/variables' as *;
+
+$layout : (
+    "app-header-height": $app-header-height,
+    "app-sidebar-header-height": $app-sidebar-header-height,
+    "app-sidebar-footer-height": $app-sidebar-footer-height,
+    "app-sidebar-width": $app-sidebar-width,
+    "app-sidebar-collapsed-width": $app-sidebar-collapsed-width,
+    "app-sidebar-header-border": $app-sidebar-header-border,
+    "app-sidebar-menu-hover-color": $app-sidebar-menu-hover-color,
+    "app-body-background": $app-body-background,
+    "app-sidebar-shadow": $app-sidebar-shadow,
+    "app-sidebar-active-nav-link-shadow": $app-sidebar-active-nav-link-shadow,
+    "app-header-shadow": $app-header-shadow,
+    "theme-primary": $primary,
+);
+
+:root{
+    @each $key, $value in $layout{
+        --#{$key}: #{$value};
+    }
+}

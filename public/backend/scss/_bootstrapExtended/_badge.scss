@@ -1,0 +1,24 @@
+.badge {
+    border: $badge-border-width solid $badge-border-color;
+    &:is([class*="text-bg"]) {
+        border-width: 0;
+    }
+   
+}
+
+
+.badge-icon {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.35rem;
+	height: 1.5rem;
+	width: 1.5rem;
+	font-size: 0.812rem;
+}
+
+@each $color, $value in $theme-colors {
+    @include conca-badge-variants('.badge-#{$color}', $value);
+    @include conca-badge-outline-variants('.badge-outline-#{$color}', $value);
+    @include conca-badge-label-variants('.badge-label-#{$color}', $value);
+}

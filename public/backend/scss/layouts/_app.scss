@@ -1,0 +1,49 @@
+@use '../theme/utils/variables' as *;
+.app-main{
+    background-color: var(--app-body-background);
+    min-height: 100vh;
+}
+
+.app-wrapper{
+    transition: margin-left .3s ease;
+}
+
+[data-app-sidebar-collapsed="true"]{
+    margin-left: var(--app-sidebar-collapsed-width);
+
+    @media (max-width: 1199px) {
+        margin-left: 0;
+    }
+}
+[data-app-sidebar-collapsed="false"]{
+    margin-left: var(--app-sidebar-width);
+    @media (max-width: 1199px) {
+        margin-left: 0;
+    }
+}
+
+.app-content-wrapper{
+    display: flex;
+    align-items: stretch;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.app-backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $black;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition:  all 0.3s ease-in-out;
+
+    &.show{
+        opacity: 0.5;
+        visibility: visible;
+    }
+}

@@ -1,0 +1,55 @@
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #F6F6F9;
+$gray-300: #dee2e6;
+$gray-400: #939397;
+$gray-500: #84838D;
+$gray-600: #57575A;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #242331;
+$black:    #191822;
+
+
+$blue:    #3571FC;
+$indigo:  #5F4AFE;
+$purple:  #6f42c1;
+$pink:    #FF5580;
+$red:     #FF3B3B;
+$orange:  #FF8800;
+$yellow:  #ffc107;
+$green:   #09AF67;
+$teal:    #07BFE4;
+
+
+
+$primary:       $indigo;
+
+
+
+//  layout vars start
+
+// app vars
+$app-body-background : #F4F4F7;
+
+// header vars
+$app-header-shadow: 0px 1px 2px 0px rgba($black, .12);
+$app-header-height : 60px;
+
+
+// sidebar vars
+$app-sidebar-footer-height : 60px;
+$app-sidebar-header-height : $app-header-height;
+$app-sidebar-width : 275px;
+$app-sidebar-collapsed-width : 80px;
+$app-sidebar-menu-hover-color: #F6F6F9;
+$app-sidebar-header-border : #F6F6F9;
+$app-sidebar-shadow: 0px 1px 3px 0px rgba($black, .18);
+$app-sidebar-active-nav-link-shadow: 0px 1px 2px 0 rgba($color: #2411B8, $alpha: .25), 0px 0px 1px 0 rgba($color: #2B18BE, $alpha: .25);
+
+
+
+
+
+
+// layout vars end 

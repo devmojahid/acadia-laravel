@@ -1,0 +1,3 @@
+sass --watch D:\Dropbox\Shahnewaz\conca-dashboard\scss\app-core.scss:D:\Dropbox\Shahnewaz\conca-dashboard\assets\css\app-core.css
+
+sass --watch D:\Dropbox\Shahnewaz\conca-dashboard\scss\core.scss:D:\Dropbox\Shahnewaz\conca-dashboard\assets\vendor\css\core.css

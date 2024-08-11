@@ -1,0 +1,431 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+:root {
+  --app-header-height: 60px;
+  --app-sidebar-header-height: 60px;
+  --app-sidebar-footer-height: 60px;
+  --app-sidebar-width: 275px;
+  --app-sidebar-collapsed-width: 80px;
+  --app-sidebar-header-border: #F6F6F9;
+  --app-sidebar-menu-hover-color: #F6F6F9;
+  --app-body-background: #F4F4F7;
+  --app-sidebar-shadow: 0px 1px 3px 0px rgba(25, 24, 34, 0.18);
+  --app-sidebar-active-nav-link-shadow: 0px 1px 2px 0 rgba(36, 17, 184, 0.25), 0px 0px 1px 0 rgba(43, 24, 190, 0.25);
+  --app-header-shadow: 0px 1px 2px 0px rgba(25, 24, 34, 0.12);
+  --theme-primary: #5F4AFE;
+}
+
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--app-sidebar-width);
+  box-shadow: var(--app-sidebar-shadow);
+  height: 100%;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  z-index: 999;
+}
+.app-sidebar-wrapper {
+  width: var(--app-sidebar-width);
+}
+.app-sidebar-toggle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 25px;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  width: 30px;
+  height: 30px;
+  color: #807DA3;
+  transition: all 0.3s ease;
+  transform-origin: center center;
+}
+.app-sidebar-toggle.collapsed {
+  color: var(--theme-primary);
+  transform: translateY(-50%) rotate(180deg);
+}
+.app-sidebar-toggle:hover {
+  color: var(--theme-primary);
+}
+.app-sidebar-close-btn {
+  color: var(--bs-secondary);
+  width: 24px;
+  height: 24px;
+  line-height: 4px;
+  text-align: center;
+  transform-origin: center center;
+}
+.app-sidebar-close-btn:hover {
+  color: var(--bs-black);
+}
+@media (max-width: 1199px) {
+  .app-sidebar {
+    transform: translateX(-100%);
+  }
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+.app-sidebar.collapsed {
+  width: var(--app-sidebar-collapsed-width);
+}
+@media (max-width: 1199px) {
+  .app-sidebar.collapsed {
+    width: var(--app-sidebar-width);
+  }
+}
+.app-sidebar.collapsed .app-logo-icon {
+  display: block;
+}
+.app-sidebar.collapsed .app-main-logo {
+  display: none;
+}
+.app-sidebar.collapsed .app-sidebar-menu ul li a .menu-title, .app-sidebar.collapsed .app-sidebar-menu ul li a .menu-arrow {
+  opacity: 0;
+}
+.app-sidebar.collapsed .app-sidebar-menu ul li.menu-section-title {
+  padding-left: 6px;
+}
+.app-sidebar.collapsed .app-sidebar-menu ul li.menu-section-title .menu-section-title-text {
+  opacity: 0;
+  visibility: hidden;
+}
+.app-sidebar.collapsed .app-sidebar-menu ul li.menu-section-title .menu-section-title-line {
+  opacity: 1;
+  visibility: visible;
+}
+.app-sidebar.collapsed .app-sidebar-menu ul li > .app-sidebar-submenu {
+  opacity: 0;
+}
+.app-sidebar.collapsed .app-sidebar-menu ul li.has-dropdown.dropdown-opened::after {
+  opacity: 1;
+}
+.app-sidebar.collapsed:hover {
+  width: var(--app-sidebar-width);
+}
+.app-sidebar.collapsed:hover .app-logo-icon {
+  display: none;
+}
+.app-sidebar.collapsed:hover .app-main-logo {
+  display: block;
+}
+.app-sidebar.collapsed:hover .app-sidebar-menu {
+  opacity: 1;
+}
+.app-sidebar.collapsed:hover .app-sidebar-menu ul li a .menu-icon, .app-sidebar.collapsed:hover .app-sidebar-menu ul li a .menu-title, .app-sidebar.collapsed:hover .app-sidebar-menu ul li a .menu-arrow {
+  opacity: 1;
+}
+.app-sidebar.collapsed:hover .app-sidebar-menu ul li a .menu-icon {
+  background: initial;
+}
+.app-sidebar.collapsed:hover .app-sidebar-menu ul li.menu-section-title {
+  padding-left: 20px;
+}
+.app-sidebar.collapsed:hover .app-sidebar-menu ul li.menu-section-title .menu-section-title-text {
+  opacity: 1;
+  visibility: visible;
+}
+.app-sidebar.collapsed:hover .app-sidebar-menu ul li.menu-section-title .menu-section-title-line {
+  opacity: 0;
+  visibility: hidden;
+}
+.app-sidebar.collapsed:hover .app-sidebar-menu ul li > .app-sidebar-submenu {
+  opacity: 1;
+}
+.app-sidebar.collapsed:hover .app-sidebar-menu ul li.has-dropdown.dropdown-opened::after {
+  opacity: 0;
+}
+
+.app-sidebar-header {
+  height: var(--app-sidebar-header-height);
+  border-right: 1px solid var(--app-sidebar-header-border);
+  border-bottom: 1px solid var(--app-sidebar-header-border);
+  padding: 14px 30px;
+  position: relative;
+}
+.app-sidebar-header .app-logo-icon {
+  display: none;
+}
+
+.app-sidebar-menu {
+  padding: 20px 15px 20px 15px;
+  position: relative;
+}
+.app-sidebar-menu ul {
+  padding: 0;
+  margin: 0;
+}
+.app-sidebar-menu ul li {
+  list-style-type: none;
+  display: block;
+}
+.app-sidebar-menu ul li a {
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  color: #57575A;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 2px 0;
+  margin-left: 4px;
+}
+.app-sidebar-menu ul li a .menu-icon {
+  padding: 9px 15px 10px 15px;
+  width: 47px;
+}
+.app-sidebar-menu ul li a .menu-arrow {
+  margin-right: 14px;
+}
+.app-sidebar-menu ul li a span {
+  transition: all 0.3s ease;
+}
+.app-sidebar-menu ul li a.active {
+  color: var(--theme-primary);
+}
+.app-sidebar-menu ul li a:hover {
+  color: var(--theme-primary);
+  background-color: var(--app-sidebar-menu-hover-color);
+}
+.app-sidebar-menu ul li.has-dropdown.dropdown-opened {
+  position: relative;
+}
+.app-sidebar-menu ul li.has-dropdown.dropdown-opened > a {
+  color: var(--theme-primary);
+}
+.app-sidebar-menu ul li.has-dropdown.dropdown-opened::after {
+  position: absolute;
+  content: "";
+  width: 1px;
+  height: calc(100% - 40px);
+  background-color: #D9D9D9;
+  left: 28px;
+  top: 40px;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+.app-sidebar-menu ul li.has-dropdown.dropdown-opened li.has-dropdown.dropdown-opened::after {
+  display: none;
+}
+.app-sidebar-menu ul li ul.app-sidebar-submenu {
+  display: none;
+  padding-left: 19px;
+  padding-right: 10px;
+}
+.app-sidebar-menu ul li ul.app-sidebar-submenu li a {
+  position: relative;
+  padding: 13px 15px 13px 28px;
+}
+.app-sidebar-menu ul li ul.app-sidebar-submenu li a::after {
+  position: absolute;
+  content: "";
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+.app-sidebar-menu ul li ul.app-sidebar-submenu li a.active, .app-sidebar-menu ul li ul.app-sidebar-submenu li a.active:hover {
+  background-color: var(--theme-primary);
+  color: #fff;
+  box-shadow: var(--app-sidebar-active-nav-link-shadow);
+}
+.app-sidebar-menu ul li ul.app-sidebar-submenu li a:hover {
+  background-color: #F6F6F9;
+  color: #57575A;
+}
+.app-sidebar-menu ul li ul.app-sidebar-submenu li.has-dropdown.dropdown-opened > a {
+  background-color: #F6F6F9;
+  color: #57575A;
+  box-shadow: none;
+}
+.app-sidebar-menu ul li ul.app-sidebar-submenu li ul {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.app-sidebar-menu ul li ul.app-sidebar-submenu li ul ul {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+.app-sidebar-menu ul li.menu-section-title {
+  color: #939397;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-left: 20px;
+  margin-top: 25px;
+  height: 20px;
+  padding-bottom: 6px;
+  position: relative;
+}
+.app-sidebar-menu ul li.menu-section-title .menu-section-title-line {
+  height: 4px;
+  width: 16px;
+  background-color: #D9D9D9;
+  border-radius: 2px;
+  margin: 0 14px;
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  opacity: 0;
+  visibility: hidden;
+}
+.app-sidebar-menu ul li.menu-section-title .menu-section-title-line::after, .app-sidebar-menu ul li.menu-section-title .menu-section-title-line::before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 4px;
+  background-color: #D9D9D9;
+  border-radius: 2px;
+  left: -8px;
+  position: absolute;
+}
+.app-sidebar-menu ul li.menu-section-title .menu-section-title-line::after {
+  left: auto;
+  right: -8px;
+}
+
+.app-sidebar-footer {
+  height: var(--app-sidebar-footer-height);
+}
+
+.app-header {
+  height: var(--app-header-height);
+  box-shadow: var(--app-header-shadow);
+}
+@media (max-width: 1199px) {
+  .app-header {
+    margin: 0 36px;
+  }
+}
+@media (max-width: 911px) {
+  .app-header {
+    margin: 0 24px;
+  }
+}
+@media (max-width: 767px) {
+  .app-header {
+    margin: 0 20px;
+  }
+}
+@media (max-width: 575px) {
+  .app-header {
+    margin: 0 15px;
+  }
+}
+
+.app-header-search-input {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  border: 0;
+  outline: 0;
+  border-radius: 40px;
+  padding-left: 44px;
+  padding-right: 26px;
+  background-color: #F6F6F9;
+  font-size: 14px;
+  color: #191822;
+}
+.app-header-search-input:focus::placeholder {
+  opacity: 0;
+}
+.app-header-search-btn {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  background-color: #F6F6F9;
+  color: #84838D;
+  border: 0;
+  outline: 0;
+}
+.app-header-search-btn svg {
+  transform: translateY(-2px);
+}
+.app-header-search-btn::placeholder {
+  color: #84838D;
+}
+.app-header-search-btn:hover {
+  color: #5F4AFE;
+}
+
+.app-header-bar-btn {
+  background-color: transparent;
+}
+
+.header-user .dropdown-menu {
+  top: 9px !important;
+}
+
+.app-main {
+  background-color: var(--app-body-background);
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  transition: margin-left 0.3s ease;
+}
+
+[data-app-sidebar-collapsed=true] {
+  margin-left: var(--app-sidebar-collapsed-width);
+}
+@media (max-width: 1199px) {
+  [data-app-sidebar-collapsed=true] {
+    margin-left: 0;
+  }
+}
+
+[data-app-sidebar-collapsed=false] {
+  margin-left: var(--app-sidebar-width);
+}
+@media (max-width: 1199px) {
+  [data-app-sidebar-collapsed=false] {
+    margin-left: 0;
+  }
+}
+
+.app-content-wrapper {
+  display: flex;
+  align-items: stretch;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #191822;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.app-backdrop.show {
+  opacity: 0.5;
+  visibility: visible;
+}
+
+/*# sourceMappingURL=app-core.css.map */

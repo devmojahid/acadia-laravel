@@ -1,0 +1,60 @@
+.header-nav-link {
+    display: block;
+    width: $nav-link-size;
+    height: $nav-link-size;
+    line-height: $nav-link-size;
+    text-align: center;
+    color: $nav-link-color;
+    border-radius: $nav-link-border-radius;
+  
+    &:hover,
+    &:focus {
+      color: var(--#{$prefix}nav-link-hover-color);
+      background-color: $nav-link-hover-bg;
+      text-decoration: if($link-hover-decoration == underline, none, null);
+    }
+  
+    &:focus-visible {
+      outline: 0;
+      box-shadow: $nav-link-focus-box-shadow;
+    }
+
+    & svg,
+    & img{
+        transform: translateY(-2px);
+    }
+    
+    &:not(.has-avater) img{
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+    }
+
+
+    // code for user
+    &.has-avater{
+        width: 34px;
+        height: 34px;
+        line-height: 34px;
+
+        img{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+    }
+
+
+    &-toggle{
+        position: relative;
+        margin-right: 16px;
+        &-icon{
+            position: absolute;
+            top: 50%;
+            right: -16px;
+            transform: translateY(-50%);
+            text-align: right;
+            width: 16px;
+        }
+    }
+}
